@@ -1,0 +1,39 @@
+<!-- -->
+
+<launch>
+
+	<!-- camera1  -->
+	<include file="$(find image_saver)/launch/getAndSave.launch" >
+		<arg name="camera_id" value="0"/>
+		<arg name="path" value="$(find image_saver)/image/left"/>
+		<arg name="fps" value="20"/>
+	</include>
+	
+	<!-- camera2 -->
+	<include file="$(find image_saver)/launch/getAndSave.launch" >
+		<arg name="camera_id" value="1"/>
+		<arg name="path" value="$(find image_saver)/image/right"/>
+		<arg name="fps" value="20"/>
+	</include>
+
+	
+	<!--zed  -->
+	<include file="$(find zed_cpu_ros)/launch/zed_cpu_ros.launch" >
+		<arg name="show_image" value="false"/>
+		<arg name="frame_rate" value="20"/>
+	</include>
+	
+	<node pkg="image_saver" type="image_saver_node" name="image_saver_zedleft" output="screen" >
+		<param name ="image_topic" value="/camera/left/image_raw"/>
+		<param name ="image_path" value="$(find image_saver)/image/zed/left"/>
+		<param name ="use_trigger" value="true"/>
+	</node>
+	<node pkg="image_saver" type="image_saver_node" name="image_saver_zedright" output="screen" >
+		<param name ="image_topic" value="/camera/right/image_raw"/>
+		<param name ="image_path" value="$(find image_saver)/image/zed/right"/>
+		<param name ="use_trigger" value="true"/>
+	</node>
+	
+
+</launch>
+
