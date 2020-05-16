@@ -84,7 +84,6 @@ void ImageSaver::imageCallback(const sensor_msgs::Image::ConstPtr &msg)
 void ImageSaver::saveImageCallback(const std_msgs::Int32::ConstPtr &msg)
 { 
 	
-	
 	if(imgPtr_ != nullptr && !imgPtr_->image.empty())
 	{
 		std::string file_name = image_path_+ std::to_string(msg->data) + ".jpg";

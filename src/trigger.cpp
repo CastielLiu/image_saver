@@ -15,17 +15,20 @@ int main(int argc,char** argv)
 	
 	ros::NodeHandle nh;
 
-	ros::Publisher pub = nh.advertise<std_msgs::Int32>("save_image_trigger",1);
+	ros::Publisher pub = nh.advertise<std_msgs::Int32>("save_image_trigger",0);
 	
 	ros::Rate loop_rate(atoi(argv[1]));
 	
-	
 	std_msgs::Int32 triggerMsg;
 	triggerMsg.data = 0;
+
+	if(argc > 2)
+		triggerMsg.data = atoi(argv[2]) - 1;
 	
 	while(ros::ok())
 	{
 		pub.publish(triggerMsg);
+		ROS_INFO("%d",triggerMsg.data);
 		
 		triggerMsg.data ++ ;
 		
