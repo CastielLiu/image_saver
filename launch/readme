@@ -1,4 +1,0 @@
-roslaunch image_saver demo.launch  #内部配置摄像头ID
-
-
-rosrun image_saver save_image_trigger 5
