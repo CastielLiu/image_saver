@@ -16,7 +16,7 @@
 		<arg name="fps" value="20"/>
 	</include>
 
-	
+
 	<!--zed  -->
 	<include file="$(find zed_cpu_ros)/launch/zed_cpu_ros.launch" >
 		<arg name="show_image" value="false"/>
@@ -33,7 +33,7 @@
 		<param name ="image_path" value="$(find image_saver)/image/zed/right"/>
 		<param name ="use_trigger" value="true"/>
 	</node>
-	
+
 
 </launch>
 
